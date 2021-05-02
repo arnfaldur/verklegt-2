@@ -1,1 +1,1 @@
-# Verklegt n�mskeið2
+# Verklegt námskeið 2
