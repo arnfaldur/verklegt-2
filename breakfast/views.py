@@ -9,4 +9,4 @@ breakfasts = [
 
 # Create your views here.
 def index(request):
-   return render(request, 'breakfast/index.html', context={'breakfasts': breakfasts})
+   return render(request, 'products/breakfast/index.html', context={'breakfasts': breakfasts})

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'breakfast.apps.BreakfastConfig',
+    'products.apps.ProductsConfig',
 ]
 
 MIDDLEWARE = [
