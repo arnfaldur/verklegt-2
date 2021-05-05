@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-   <div class="container">
+    <div class="breakfast">
         <h1>Welcome to the breakfast app!</h1>
-   </div>
+    {% for breakfast in breakfasts %}
+        <h4>{{ breakfast.name }}</h4>
+        <p>{{ breakfast.price }}</p>
+    {% endfor %}
+    </div>
+
 {% endblock %}
