@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'breakfast.apps.BreakfastConfig',
     'products.apps.ProductsConfig',
     'user.apps.UserConfig',
 ]
