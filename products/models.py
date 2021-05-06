@@ -3,20 +3,18 @@ from django.db import models
 from django.db.models import CharField, DecimalField
 
 
-# Create your models here.
+class ProductCategory(models.Model):
+    name = CharField(max_length=64)
+
 
 class Product(models.Model):
-    name = CharField(max_length=128, primary_key=True)
+    name = models.CharField(max_length=128)
+    description = models.CharField(max_length=255, blank=True)
+    category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
     price = DecimalField(max_digits=10, decimal_places=2)
-
-    def __str__(self):
-        return self.name
+    on_sale = models.BooleanField(default=False)
 
 
-class Category(models.Model):
-    id = models.BigAutoField
-    name = CharField(max_length=64, primary_key=True)
-    products = models.ManyToManyField(Product)
-
-    def __str__(self):
-        return self.name
+class ProductImage(models.Model):
+    image = models.CharField(max_length=9999)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
