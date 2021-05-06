@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from products.models import Product, get_breakfasts
+from products.models import Product
 
 
 # Create your views here.
 
 def index(request):
-    return render(request, 'base.html')
+    return render(request, 'products/index.html')
 
 
 def breakfast(request):
