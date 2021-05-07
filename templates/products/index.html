@@ -4,9 +4,9 @@
     <div class="products">
         <h1>Products</h1>
         <div class="list-group">
-            <a href="all" class="list-group-item list-group-item-action">All products</a>
+            <a href="products/all/" class="list-group-item list-group-item-action">All products</a>
             {% for category in categories %}
-                <a href="{{ category }}" class="list-group-item list-group-item-action">{{ category }}</a>
+                <a href="products/{{ category.name.lower }}/" class="list-group-item list-group-item-action">{{ category }}</a>
             {% endfor %}
         </div>
     </div>

@@ -1,24 +1,32 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView
 from products.models import Product, Category
 
 
-# Create your views here.
+class CategoryList(ListView):
+    model = Category
+    context_object_name = 'categories'
 
-def overview(request):
-    return render(request,
-                  'products/index.html',
-                  context={'categories': Category.objects.all()},
-                  )
+    template_name = 'products/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['categories'] = Category.objects.all()
+        return context
 
 
-def view(request, category: str = None):
-    if category.lower() in {'breakfast', 'milk', 'tableware', 'all'}:
-        return render(request,
-                      'products/product-list.html',
-                      context={'category': category,
-                               'products': Product.objects.all() if category.lower() == 'all' else Product.objects.filter(
-                                   category__name__contains=category)}
-                      )
-    else:
-        return HttpResponse(f'404: There is no category {category}', status=404)
+class ProductList(ListView):
+    model = Product
+
+    def get_queryset(self):
+        return Product.objects.all() if self.kwargs['category'] == 'all' else Product.objects.filter(
+            category__name__contains=self.kwargs['category'])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['category'] = self.kwargs['category']
+        context['products'] = self.get_queryset()
+
+        return context
