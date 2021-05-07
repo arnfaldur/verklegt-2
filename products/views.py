@@ -36,3 +36,13 @@ class ProductDetailView(DetailView):
     model = Product
 
     context_object_name = 'product'
+
+def create_product():
+    if request.method == 'POST':
+        print(1)
+    else:
+        print(2)
+        # TODO: Instance new productCreateForm()
+    return render(request,'products/create_product.html',{
+        'form': form
+    })
