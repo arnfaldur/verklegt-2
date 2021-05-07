@@ -19,14 +19,18 @@ class ProductList(ListView):
     model = Product
 
     def get_queryset(self):
-        products = Product.objects.all()
-        return products if self.kwargs['category'] == 'all' else Product.objects.filter(
+        # if the url is /all, return all products from the products model
+        # otherwise only return the products from the category /<category>
+        return Product.objects.all() if self.kwargs['category'] == 'all' else Product.objects.filter(
             category__name__contains=self.kwargs['category'])
 
     def get_context_data(self, **kwargs):
+        # Get the default context made by ListView
         context = super().get_context_data(**kwargs)
 
+        # add the name of the category to the context
         context['category'] = self.kwargs['category']
+        # add the queried products to the context for display
         context['products'] = self.get_queryset()
 
         return context
