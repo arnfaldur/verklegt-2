@@ -1,6 +1,26 @@
 .breakfast{
     background-color: white;
 }
-.cart{
+.product{
+    margin-top: 30px;
+    height: 500px;
+
+}
+.card{
+    margin-top: 30px;
+
+}
+.cardrow{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.btn-primary{
+    margin: 2px;
+}
+.about{
+    margin-right: 10px;
+}
+.cardnameprice{
 
 }

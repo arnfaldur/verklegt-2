@@ -19,7 +19,8 @@ class ProductList(ListView):
     model = Product
 
     def get_queryset(self):
-        return Product.objects.all() if self.kwargs['category'] == 'all' else Product.objects.filter(
+        products = Product.objects.all()
+        return products if self.kwargs['category'] == 'all' else Product.objects.filter(
             category__name__contains=self.kwargs['category'])
 
     def get_context_data(self, **kwargs):

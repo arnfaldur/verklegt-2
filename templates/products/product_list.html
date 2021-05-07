@@ -1,29 +1,26 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
+
     <div class="container">
         <div class="row row-cols-auto">
             {% for product in products %}
                 <div class="col">
 {#                TODO: This next line makes the styling all weird #}
-                    <a href="/products/product/{{ product.id }}">
+                    <a href="/products/product/{{ product.id }}"> </a>
                         <div class="card" style="width: 18rem;">
                             <img src="..." class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">{{ product.name }}</h5>
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up
-                                    the bulk of the card's content.
-                                </p>
+                                <div class="cardrow">
+                                    <h4 class="card-title">{{ product.name }} <small class="text-muted"> {{ product.price }} kr </small> </h4>
+                                     </div>
                                 <div class="container">
-                                    <div class="row">
-                                        <div class="col">
-                                            {{ product.price }} kr.
+                                    <div class="cardrow">
+                                        <div class="col-md-auto">
+                                            <a href="/products/product/{{ product.id }}" class="btn btn-primary">Sjá nánar</a>
                                         </div>
                                         <div class="col-md-auto">
-                                            <a href="#" class="btn btn-primary">Sjá nánar</a>
-                                        </div>
-                                        <div class="col-md-auto">
-                                            <a class="cart" href="#">
+                                            <a class="btn btn-primary" href="#">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                      fill="currentColor"
                                                      class="bi bi-cart"
@@ -36,9 +33,10 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+
                 </div>
             {% endfor %}
         </div>
     </div>
+
 {% endblock %}
