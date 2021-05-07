@@ -1,5 +1,4 @@
-from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from products.models import Product, Category
 
 
@@ -30,3 +29,9 @@ class ProductList(ListView):
         context['products'] = self.get_queryset()
 
         return context
+
+
+class ProductDetailView(DetailView):
+    model = Product
+
+    context_object_name = 'product'
