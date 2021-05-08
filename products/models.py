@@ -21,6 +21,14 @@ class Category(models.Model):
         return self.name
 
 
+class Attribute(models.Model):
+    name = CharField(max_length=64)
+    products = models.ManyToManyField(Product)
+
+    def __str__(self):
+        return self.name
+
+
 class Image(models.Model):
     image = models.ImageField()
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
