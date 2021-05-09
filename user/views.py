@@ -18,7 +18,12 @@ def register(request):
 def userprofile(request):
     profile = User.objects.filter(name=request.user).first()
     if request. method == 'POST':
-        print(1)
+        form = ProfileForm(instance=profile,data=request.POST)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profule.user = request.user
+            profile.save()
+            return rederict('profile')
     return render(request, 'user/userprofile.html',{
         'form': ProfileForm(instance=profile)
     })
