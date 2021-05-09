@@ -5,7 +5,6 @@ from products.models import Product, Category
 class CategoryList(ListView):
     model = Category
     context_object_name = 'categories'
-
     template_name = 'products/index.html'
 
     def get_context_data(self, **kwargs):
@@ -38,7 +37,6 @@ class ProductList(ListView):
 
 class ProductDetailView(DetailView):
     model = Product
-
     context_object_name = 'product'
 
 

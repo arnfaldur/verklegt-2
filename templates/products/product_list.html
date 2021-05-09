@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
     <form action="/products/{{ category }}/search/" method="get" class="row align-items-center">
         <div class="col-auto">
             <input name="s" type="search" class="form-control" id="productSearch" placeholder="search here...">
@@ -17,5 +16,4 @@
             </div>
         {% endfor %}
     </div>
-
 {% endblock %}
