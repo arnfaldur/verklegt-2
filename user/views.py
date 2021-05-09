@@ -20,6 +20,6 @@ def userprofile(request):
     if request. method == 'POST':
         print(1)
     return render(request, 'user/userprofile.html',{
-        'form': ProfileForm()
+        'form': ProfileForm(instance=profile)
     })
 
