@@ -52,7 +52,7 @@ class SearchResult(ProductList):
 
         return context
 
-
+#@login_required
 def create_product(request):
     if request.method == 'POST':
         print(1)
