@@ -2,14 +2,14 @@
 {% load static %}
 {% block content %}
 
-    <div class="row align-items-center">
+    <form action="/products/{{ category }}/search/" method="get" class="row align-items-center">
         <div class="col-auto">
-            <input type="search" class="form-control" id="productSearch" placeholder="search here...">
+            <input name="s" type="search" class="form-control" id="productSearch" placeholder="search here...">
         </div>
         <div class="col-auto">
             <button type="submit" class="btn btn-primary">Search</button>
         </div>
-    </div>
+    </form>
     <div class="row row-cols-auto">
         {% for product in products %}
             <div class="col">

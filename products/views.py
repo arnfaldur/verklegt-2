@@ -41,12 +41,24 @@ class ProductDetailView(DetailView):
 
     context_object_name = 'product'
 
-def create_product():
+
+class SearchResult(ProductList):
+    template_name = 'products/product_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['products'] = self.get_queryset().filter(name__contains=self.request.GET.get('s'))
+
+        return context
+
+
+def create_product(request):
     if request.method == 'POST':
         print(1)
     else:
         print(2)
         # TODO: Instance new productCreateForm()
-    return render(request,'products/create_product.html',{
+    return render(request, 'products/create_product.html', {
         'form': form
     })
