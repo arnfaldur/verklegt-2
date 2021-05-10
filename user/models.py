@@ -7,7 +7,7 @@ class User(AbstractUser):
     address = CharField(max_length=256, blank=True)
     city = CharField(max_length=256, blank=True)
     postal_code = CharField(max_length=16, blank=True)
-    picture = ImageField()
+    picture = ImageField(blank=True)
 
     class Meta:
         db_table = 'auth_user'
