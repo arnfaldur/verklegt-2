@@ -21,6 +21,14 @@
 .about{
     margin-right: 10px;
 }
-.cardnameprice{
+.form{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    max-width:500px;
 
+
+}
+.btn-primary{
+    margin-top: 10px;
 }

@@ -1,12 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="user">
-        <h1>Welcome to the user profile!</h1>
-    </div>
-    <h1>Profile</h1>
-    <form class="form form- horizontal" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" class="btn btn-primary" value="Update"/>
-        </form>
+<!--    <div class="user">-->
+<!--        <h1>Welcome to the user profile!</h1>-->
+<!--    </div>-->
+        {% if user.is_authenticated %}
+            <h1>You are logged in.</h1>
+            <div class="profileform">
+                <form class="form form- horizontal" method="post">
+                {% csrf_token %}
+                {{ form }}
+                    <input type="submit" class="btn btn-primary" value="Update"/>
+                </form>
+            {% else %}
+                <h1>You are not logged in. Please log in or register!</h1>
+                <a class="btn btn-primary" href="/user/login">Log in </a>
+                <a class="btn btn-primary" href="/user/register">Register</a>
+            {% endif %}
+            </div>
 {% endblock %}

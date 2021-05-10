@@ -20,7 +20,10 @@
                     <a class="nav-link" href="{% url 'login' %}">Login</a>
                     <a class="nav-link" href="{% url 'register' %}">Register</a>
                 {% endif %}
-            </div>
+            </div>srz
+                {% if user.is_authenticated %}
+                    <img src="{{ user.userprofile.picture }}" class="profile-image"/>
+                {% endif %}
 
             {#            <form class="d-flex me-auto">#}
             {#                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">#}
