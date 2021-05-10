@@ -1,17 +1,14 @@
 from django.db import models
 from django.db.models import CharField, ImageField
+from django.contrib.auth.models import AbstractUser
 
 
-# Create your models here.
-
-
-class User(models.Model):
-    name = CharField(max_length=128)
-    address = CharField(max_length=256)
-    city = CharField(max_length=256)
-    postal_code = CharField(max_length=16)
-    email = models.EmailField()
-    username = CharField(max_length=256)
-    password = CharField(max_length=256)
+class User(AbstractUser):
+    address = CharField(max_length=256, blank=True)
+    city = CharField(max_length=256, blank=True)
+    postal_code = CharField(max_length=16, blank=True)
     picture = ImageField()
+
+    class Meta:
+        db_table = 'auth_user'
 
