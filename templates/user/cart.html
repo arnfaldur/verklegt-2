@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Shopping cart:</h1>
+    <div class="row row-cols-auto">
+        {% for product in cart %}
+            <div class="col">
+                {% include 'user/cart_product_card.html' %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+<div class="card">
+    {# TODO: finna út úr myndum#}
+    {# <img src="..." class="card-img-top" alt="..."> #}
+    <div class="card-body">
+        <div class="cardrow">
+            <h4 class="card-title">{{ product.product.name }}
+                <small class="text-muted"> {{ product.product.price }}kr</small>
+                {% if product.quantity > 1 %}
+                    <small>x{{ product.quantity }}</small>
+                {% endif %}
+            </h4>
+        </div>
+        <div class="cardrow">
+            <div class="col-md-auto">
+                <a href="/products/product/{{ product.product.id }}" class="btn btn-primary stretched-link">Sjá nánar</a>
+            </div>
+        </div>
+    </div>
+</div>
