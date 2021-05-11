@@ -52,19 +52,6 @@ class ProductDetailView(DetailView):
     context_object_name = 'product'
 
 
-class sortlist(ProductList):
-     template_name = 'products/product_list.html'
-
-     def sort_by_name(self):
-         sorted = State.order_by('name')
-         return sorted
-
-def about(request):
-    pass
-
-def contact(request):
-    pass
-
 
 #@login_required
 
