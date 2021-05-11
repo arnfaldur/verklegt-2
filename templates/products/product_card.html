@@ -1,12 +1,14 @@
 <div class="card">
+    <div class="card-img">
     {% for product_image in product.image_set.all %}
-        <img src="{{ product_image.image }}" class="product-img" width="100%" alt="{{ product.name }}">
+        <img src="{{ product_image.image }}" class="product-img" width="75%" alt="{{ product.name }}">
     {% endfor %}
+    </div>
     <div class="card-body">
-        <div class="cardrow">
-            <h4 class="card-title">{{ product.name }} <small
-                    class="text-muted"> {{ product.price }}
-                kr </small></h4>
+        <div class="cardcol">
+            <h4 class="card-title">{{ product.name }}</h4>
+            <small class="text-muted"> {{ product.price }}
+                kr </small>
         </div>
         <div class="cardrow">
             <div class="col-md-auto">
