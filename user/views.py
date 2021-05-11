@@ -65,7 +65,7 @@ class Cart(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update(
-            self.get_queryset().all().aggregate(
+            self.get_queryset().aggregate(
                 total_price=Sum(F('product__price') * F('quantity')),
             )
         )
