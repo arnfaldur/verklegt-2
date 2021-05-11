@@ -1,6 +1,8 @@
 from django.views.generic import ListView, DetailView
-from products.models import Product, Category
+from products.models import Product, Category, Image
 from django.shortcuts import render
+from django import forms
+from products.forms.product_form import ProductCreateForm
 
 
 class CategoryList(ListView):
@@ -26,6 +28,11 @@ class ProductList(ListView):
         context['category'] = self.kwargs['category']
 
         return context
+
+
+def product_image(request):
+    quaryset = Image.objects.all()
+    return render_to_response('product/product_list.html', {'image': quaryset})
 
 
 class SearchResult(ProductList):
@@ -63,10 +70,15 @@ def contact(request):
 #@login_required
 def create_product(request):
     if request.method == 'POST':
-        print(1)
+        form = ProductCreateForm(data=request.POST)
+        if form.is_valid():
+            product = form.save()
+            product_image = ProductImage(image=request.POST['image'],product=product)
+            product_image.save()
+            return redirect('product')
     else:
-        print(2)
-        # TODO: Instance new productCreateForm()
+        form = ProductCreateForm()
+
     return render(
         request, 'products/create_product.html', {
             'form': form

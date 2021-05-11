@@ -50,6 +50,8 @@ def add_to_cart(request, pk):
             obj.quantity = F('quantity') + 1
             obj.save()
     # TODO: else: send user to login page
+    else:
+        redirect('/user/login')
     return redirect('/user/cart')
 
 

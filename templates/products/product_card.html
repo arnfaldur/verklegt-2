@@ -1,6 +1,6 @@
 <div class="card">
     {# TODO: finna út úr myndum#}
-    {# <img src="..." class="card-img-top" alt="..."> #}
+    {# <img src="{{ product.first_image.src }}" class="card-img-top" alt="..."> #}
     <div class="card-body">
         <div class="cardrow">
             <h4 class="card-title">{{ product.name }} <small
@@ -12,7 +12,7 @@
                 <a href="/products/product/{{ product.id }}" class="btn btn-primary stretched-link">Sjá nánar</a>
             </div>
             <div class="col-md-auto" style="z-index: 1">
-                <a class="btn btn-primary" href="/products/product/{{ product.id }}" style="alignment: center">
+                <a class="btn btn-primary" href="/user/add/{{ product.id }}" style="alignment: center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                          fill="currentColor"
                          class="bi bi-cart"
