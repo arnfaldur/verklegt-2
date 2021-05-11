@@ -60,13 +60,13 @@ class Cart(ListView):
     template_name = 'user/cart.html'
 
     def get_queryset(self):
-        return ProductInCart.objects.filter(user_id=self.request.user.id)
+        return ProductInCart.objects\
+            .filter(user_id=self.request.user.id)\
+            .annotate(total=F('product__price') * F('quantity'))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update(
-            self.get_queryset().aggregate(
-                total_price=Sum(F('product__price') * F('quantity')),
-            )
+            self.get_queryset().aggregate(total_price=Sum('total'))
         )
         return context

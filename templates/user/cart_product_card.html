@@ -1,10 +1,14 @@
 <li class="list-group-item d-flex align-items-center">
-    {# TODO: finna út úr myndum#}
-    {# <img src="..." class="card-img-top" alt="..."> #}
+    <img class="product-img "
+         src="{{ product.product.image_set.first.image }}"
+         alt="{{ product.name }}"
+         style="height: 5rem"
+    >
     <h4 class="me-auto">{{ product.product.name }}</h4>
-    <small class="text-muted"> {{ product.product.price }}kr</small>
-    <small>Qty: {{ product.quantity }}</small>
-    <div class="">
-        <a href="/products/product/{{ product.product.id }}" class="btn btn-primary stretched-link">Sjá nánar</a>
-    </div>
+    <small class="text-muted m-3"> {{ product.product.price }} kr.</small>
+    <small class="m-1">Qty: {{ product.quantity }}</small>
+    <small class="m-1">Total: {{ product.total }} kr.</small>
+    <a class="btn btn-primary m-1"
+       href="/products/product/{{ product.product.id }}"
+    >Sjá nánar</a>
 </li>

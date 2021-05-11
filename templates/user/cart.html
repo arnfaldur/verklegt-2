@@ -4,12 +4,10 @@
     {% if user.is_authenticated %}
         <ul class="list-group">
             {% for product in cart %}
-                    {% include 'user/cart_product_card.html' with product=product %}
+                {% include 'user/cart_product_card.html' with product=product %}
             {% endfor %}
         </ul>
-        <div class="totalprice">
-            <h1>Total:{{ total_price }}</h1>
-        </div>
+            <h1>Total:{{ total_price }} kr.</h1>
     {% else %}
         <div class="cartauth">
             <h5>You are not logged in. Please log in or register!</h5>
