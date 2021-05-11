@@ -8,12 +8,16 @@
 }
 .card{
     margin-top: 10px;
-    witdh: 150px;
-
+    width: 150px;
+    height: 300px;
 }
 .card-img{
     display: flex;
     justify-content: center;
+}
+.card-body{
+    position: absolute;
+    bottom: 0;
 }
 .cardrow{
     display:flex;
