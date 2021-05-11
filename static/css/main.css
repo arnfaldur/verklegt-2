@@ -1,3 +1,8 @@
+.nav-top{
+    position: fixed;
+    right: 0;
+    left: 0;
+}
 .breakfast{
     background-color: white;
 }
@@ -6,18 +11,18 @@
     height: 500px;
 
 }
+.products-list-container{
+    z-index: -1;
+
+}
 .card{
     margin-top: 10px;
-    width: 150px;
-    height: 300px;
+    z-index: -1;
+
 }
 .card-img{
     display: flex;
     justify-content: center;
-}
-.card-body{
-    position: absolute;
-    bottom: 0;
 }
 .cardrow{
     display:flex;
