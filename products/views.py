@@ -52,7 +52,10 @@ class ProductDetailView(DetailView):
     context_object_name = 'product'
 
 
-
+def about(request):
+    pass
+def contact(request):
+    pass
 #@login_required
 
 def create_product(request):
