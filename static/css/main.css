@@ -7,6 +7,7 @@
 
 }
 .card{
+    margin-top: 10px;
 }
 .cardrow{
     display:flex;
@@ -54,4 +55,8 @@
 .cartauth{
     display: flex;
     flex-direction: row;
+}
+.cart{
+     display: flex;
+    flex-direction: column;
 }

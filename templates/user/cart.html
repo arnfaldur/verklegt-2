@@ -1,21 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Shopping cart:</h1>
-    <div class="row row-cols-auto">
-        {% if user.is_authenticated %}
-              {% for product in cart %}
-                    <div class="col">
-                {% include 'user/cart_product_card.html' %}
+    <div class="shoppingcart">
+        <h1>Shopping cart:</h1>
+        <div class="cart row row-cols-auto">
+            {% if user.is_authenticated %}
+                  {% for product in cart %}
+                        <div class="col">
+                    {% include 'user/cart_product_card.html' %}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="cartauth">
+                        <h5>You are not logged in. Please log in or register!</h5>
+                        <a class="btn btn-primary" href="/user/login">Log in </a>
+                        <a class="btn btn-primary" href="/user/register">Register</a>
+                {% endif %}
                     </div>
-                {% endfor %}
-            {% else %}
-                <div class="cartauth">
-                    <h5>You are not logged in. Please log in or register!</h5>
-                    <a class="btn btn-primary" href="/user/login">Log in </a>
-                    <a class="btn btn-primary" href="/user/register">Register</a>
-            {% endif %}
+            <div class="totalprice">
+                <h1>Total:{{ total_price }}</h1>
             </div>
-
-
+        </div>
     </div>
 {% endblock %}
