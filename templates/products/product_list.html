@@ -1,19 +1,35 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <form action="/products/{{ category }}/search/" method="get" class="row align-items-center">
-        <div class="col-auto">
-            <input name="s" type="search" class="form-control" id="productSearch" placeholder="search here...">
+   <div class="products-list-container">
+        <div class="filter-container">
+            <form action="/products/{{ category }}/search/" method="get" id="searchFilterForm" class="row align-items-center">
+                <div class="col-auto">
+                    <input name="s"  type="search" class="form-control" id="productSearch" placeholder="Search here...">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+                <div class="sort">
+                    <p class="sortByLabel">Sort by:</p>
+                    <div class="form-check">
+                        <input class="form-check-input" onchange="document.getElementById('searchFilterForm').submit()" type="radio" name="sort" id="name" value="name">
+                        <label class="form-check-label" for="name">Name</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" onchange="document.getElementById('searchFilterForm').submit()" type="radio" name="sort" id="price" value="price">
+                        <label class="form-check-label" for="price">Price</label>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-primary">Search</button>
+        <div class="products-list">
+            {% for product in product_list %}
+                <div class="">
+                    {% include 'products/product_card.html' %}
+                </div>
+            {% endfor %}
         </div>
-    </form>
-    <div class="row row-cols-auto">
-        {% for product in product_list %}
-            <div class="col">
-                {% include 'products/product_card.html' %}
-            </div>
-        {% endfor %}
-    </div>
+   </div>
 {% endblock %}
+

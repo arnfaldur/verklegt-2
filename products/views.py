@@ -31,10 +31,20 @@ class SearchResult(ProductList):
     template_name = 'products/product_list.html'
 
     def get_queryset(self):
+        search = self.request.GET.get('s')
+        sort = self.request.GET.get('sort')
+        filter = self.request.GET.get('filter')
+
         # Replace the product list with a reduced set of products
-        return super().get_queryset().filter(
-            name__contains=self.request.GET.get('s')
-        )
+        if search:
+            return super().get_queryset().filter(name__contains=search)
+
+        if sort:
+            return super().get_queryset().order_by(sort)
+
+        if filter:
+            return super().get_queryset()
+
 
 
 class ProductDetailView(DetailView):
@@ -42,7 +52,22 @@ class ProductDetailView(DetailView):
     context_object_name = 'product'
 
 
-# @login_required
+class sortlist(ProductList):
+     template_name = 'products/product_list.html'
+
+     def sort_by_name(self):
+         sorted = State.order_by('name')
+         return sorted
+
+def about(request):
+    pass
+
+def contact(request):
+    pass
+
+
+#@login_required
+
 def create_product(request):
     if request.method == 'POST':
         print(1)

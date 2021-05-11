@@ -7,8 +7,6 @@
 
 }
 .card{
-    margin-top: 30px;
-
 }
 .cardrow{
     display:flex;
@@ -31,4 +29,25 @@
 }
 .btn-primary{
     margin-top: 10px;
+}
+
+.products-list-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.filter-container {
+    max-width: 200px;
+}
+
+.products-list {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 16px;
+}
+
+.sortByLabel {
+    margin-top: 16px;
+    margin-bottom: 0;
 }
