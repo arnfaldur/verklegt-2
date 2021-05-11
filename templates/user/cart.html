@@ -4,7 +4,7 @@
     {% if user.is_authenticated %}
         <ul class="list-group">
             {% for product in cart %}
-                    {% include 'user/cart_product_card.html' %}
+                    {% include 'user/cart_product_card.html' with product=product %}
             {% endfor %}
         </ul>
         <div class="totalprice">
