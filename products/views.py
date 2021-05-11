@@ -30,11 +30,6 @@ class ProductList(ListView):
         return context
 
 
-def product_image(request):
-    quaryset = Image.objects.all()
-    return render_to_response('product/product_list.html', {'image': quaryset})
-
-
 class SearchResult(ProductList):
     template_name = 'products/product_list.html'
 

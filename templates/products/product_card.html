@@ -1,6 +1,7 @@
 <div class="card">
-    {# TODO: finna út úr myndum#}
-    {# <img src="{{ product.first_image.src }}" class="card-img-top" alt="..."> #}
+    {% for product_image in product.image_set.all %}
+        <img src="{{ product_image.image }}" class="product-img" width="100%" alt="{{ product.name }}">
+    {% endfor %}
     <div class="card-body">
         <div class="cardrow">
             <h4 class="card-title">{{ product.name }} <small
