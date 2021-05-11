@@ -1,5 +1,6 @@
 from django.views.generic import ListView, DetailView
 from products.models import Product, Category
+from django.shortcuts import render
 
 
 class CategoryList(ListView):
@@ -46,18 +47,20 @@ class SearchResult(ProductList):
             return super().get_queryset()
 
 
-
 class ProductDetailView(DetailView):
     model = Product
     context_object_name = 'product'
 
 
 def about(request):
-    pass
-def contact(request):
-    pass
-#@login_required
+    return render(request, 'products/about.html')
 
+
+def contact(request):
+    return render(request, 'products/contact.html')
+
+
+#@login_required
 def create_product(request):
     if request.method == 'POST':
         print(1)
