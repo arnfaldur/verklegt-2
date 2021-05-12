@@ -1,13 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
-    {# -------- display a overview landing page -------- #}
-    <div class="products">
-        <h1>Products</h1>
-        <div class="list-group">
-            <a href="all/" class="list-group-item list-group-item-action">All products</a>
-            {% for category in categories %}
-                <a href="{{ category.name.lower }}/" class="list-group-item list-group-item-action">{{ category }}</a>
-            {% endfor %}
+    <div class="home">
+        <div class="homecard card" style="width: 18rem;">
+            <div class="card-body">
+                <div class="hometitle">
+                    <h5 class="card-title">All products</h5>
+                    <a href="all/" class="card-link">All products</a>
+                </div>
+            </div>
         </div>
+        {% for category in categories %}
+            <div class="homecard card" style="width: 18rem;">
+                <div class="card-body">
+                    <div class="hometitle d-flex align-items-center">
+                        <h5 class="card-title">{{ category }}</h5>
+                        <a href="{{ category.name.lower }}/" class="card-link">{{ category }}</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
+
 {% endblock %}
+
