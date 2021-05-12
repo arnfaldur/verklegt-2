@@ -45,7 +45,9 @@ class SearchResult(ProductList):
             return super().get_queryset().order_by(sort)
 
         if filter:
-            return super().get_queryse().filter(filter)
+            if filter == 'All':
+                return Product.objects.all()
+            return Product.objects.filter(attribute__name__contains=filter)
 
 
 class ProductDetailView(DetailView):
