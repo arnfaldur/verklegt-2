@@ -1,4 +1,3 @@
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F, Sum
 from django.shortcuts import render, redirect
@@ -8,17 +7,10 @@ from user.forms import ProfileForm, UserRegistrationForm
 from user.models import User, ProductInCart
 
 
-def register(request):
-    if request.method == 'POST':
-        form = UserRegistrationForm(data=request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('/')
-    return render(
-        request, 'user/register.html', {
-            'form': UserRegistrationForm()
-        }
-    )
+class UserRegistrationView(CreateView):
+    form_class = UserRegistrationForm
+    template_name = 'user/register.html'
+    success_url = '/'
 
 
 class UserView(LoginRequiredMixin, UpdateView):
