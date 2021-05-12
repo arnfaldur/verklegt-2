@@ -1,5 +1,5 @@
 from django.views.generic import ListView, DetailView
-from products.models import Product, Category, Image
+from products.models import Product, Category, Image, Attribute
 from django.shortcuts import render
 from products.forms.product_form import ProductCreateForm
 
@@ -45,7 +45,7 @@ class SearchResult(ProductList):
             return super().get_queryset().order_by(sort)
 
         if filter:
-            return super().get_queryset()
+            return super().get_queryse().filter(filter)
 
 
 class ProductDetailView(DetailView):
