@@ -25,6 +25,8 @@ urlpatterns = [
     path('products/', include('products.urls')),
     path('user/', include('user.urls')),
     path('create_product/', include('products.urls')),
+    path('delete_product/', include('products.urls')),
+    path('update_product/', include('products.urls')),
     path('about/', include('products.urls')),
     path('contact/', include('products.urls')),
 

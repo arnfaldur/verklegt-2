@@ -67,14 +67,32 @@ def create_product(request):
         form = ProductCreateForm(data=request.POST)
         if form.is_valid():
             product = form.save()
-            product_image = ProductImage(image=request.POST['image'],product=product)
+            product_image = Image(image=request.POST['image'], product=product)
             product_image.save()
-            return redirect('product')
+            return redirect('products')
     else:
         form = ProductCreateForm()
 
     return render(
         request, 'products/create_product.html', {
             'form': form
-        }
-    )
+        })
+
+
+def delete_product(request, id):
+    product = get_object_or_404(Product,pk=id)
+    product.delete()
+    return redirect('products')
+
+
+def update_product(request, id):
+    instance = get_object_or_404(Product,pk=id)
+    if request.method == 'POST':
+        print(1)
+    else:
+        form = ProductUpdateForm(instance=instance)
+
+    return render(request, 'products/update_product.html', {
+        'form': form,
+        'id': id
+    })

@@ -23,6 +23,9 @@
     z-index: -1;
 
 }
+.card-title{
+    align-content: center;
+}
 .card-img{
     display: flex;
     justify-content: center;
@@ -30,7 +33,7 @@
 .cardrow{
     display:flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 .cardcol{
     display:flex;

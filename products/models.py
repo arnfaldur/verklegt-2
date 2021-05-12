@@ -30,5 +30,5 @@ class Attribute(models.Model):
 
 
 class Image(models.Model):
-    image = models.ImageField()
+    image = models.CharField(max_length=999)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
