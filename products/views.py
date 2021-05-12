@@ -1,7 +1,6 @@
 from django.views.generic import ListView, DetailView
 from products.models import Product, Category, Image
 from django.shortcuts import render
-from django import forms
 from products.forms.product_form import ProductCreateForm
 
 

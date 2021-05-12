@@ -1,7 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F, Sum
 from django.shortcuts import render, redirect
-from django.views.generic import ListView
+from django.views.generic import CreateView, ListView, UpdateView
 
 from user.forms import ProfileForm, UserRegistrationForm
 from user.models import User, ProductInCart
@@ -15,26 +16,17 @@ def register(request):
             return redirect('/')
     return render(
         request, 'user/register.html', {
-            'form': UserCreationForm()
+            'form': UserRegistrationForm()
         }
     )
 
 
-def userprofile(request):
-    # TODO: use get and handle the potential exception
-    profile = User.objects.filter(id=request.user.id).first()
-    if request.method == 'POST':
-        form = ProfileForm(instance=profile, data=request.POST)
-        if form.is_valid():
-            profile = form.save(commit=False)
-            profile.user = request.user
-            profile.save()
-            return redirect('profile')
-    return render(
-        request, 'user/userprofile.html', {
-            'form': ProfileForm(instance=profile)
-        }
-    )
+class UserView(LoginRequiredMixin, UpdateView):
+    form_class = ProfileForm
+    template_name = 'user/user_profile.html'
+
+    def get_object(self, queryset=None):
+        return self.request.user
 
 
 def add_to_cart(request, pk):
@@ -55,13 +47,13 @@ def add_to_cart(request, pk):
     return redirect('/user/cart')
 
 
-class Cart(ListView):
+class Cart(LoginRequiredMixin, ListView):
     context_object_name = 'cart'
     template_name = 'user/cart.html'
 
     def get_queryset(self):
-        return ProductInCart.objects\
-            .filter(user_id=self.request.user.id)\
+        return ProductInCart.objects \
+            .filter(user_id=self.request.user.id) \
             .annotate(total=F('product__price') * F('quantity'))
 
     def get_context_data(self, **kwargs):
