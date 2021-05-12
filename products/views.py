@@ -35,7 +35,7 @@ class SearchResult(ProductList):
     def get_queryset(self):
         search = self.request.GET.get('s')
         sort = self.request.GET.get('sort')
-        filter = self.request.GET.get('filter')
+        filtered = self.request.GET.get('filter')
 
         # Replace the product list with a reduced set of products
         if search:
@@ -44,10 +44,10 @@ class SearchResult(ProductList):
         if sort:
             return super().get_queryset().order_by(sort)
 
-        if filter:
-            if filter == 'All':
+        if filtered:
+            if filtered == 'All':
                 return Product.objects.all()
-            return Product.objects.filter(attribute__name__contains=filter)
+            return Product.objects.filter(attribute__name__contains=filtered)
 
 
 class ProductDetailView(DetailView):
