@@ -1,9 +1,9 @@
-<div class="card">
-    <div class="card-img">
-    {% for product_image in product.image_set.all %}
-        <img src="{{ product_image.image }}" class="product-img" width="75%" alt="{{ product.name }}">
-    {% endfor %}
-    </div>
+<div class="card card mb-3">
+        <div class="card-img card-img-top">
+            {% for product_image in product.image_set.all %}
+                <img src="{{ product_image.image }}" class="product-img" width="75%" alt="{{ product.name }}">
+            {% endfor %}
+        </div>
     <div class="card-body">
         <div class="cardcol">
             <h4 class="card-title">{{ product.name }}</h4>
@@ -12,10 +12,10 @@
         </div>
         <div class="cardrow">
             <div class="col-md-auto">
-                <a href="/products/product/{{ product.id }}" class="btn btn-primary stretched-link">Sjá nánar</a>
+                <a href="products/products/{{ product.id }}/" class="btn btn-primary stretched-link">Sjá nánar</a>
             </div>
             <div class="col-md-auto" style="z-index: 1">
-                <a class="btn btn-primary" href="/user/add/{{ product.id }}" style="alignment: center">
+                <a class="btn btn-primary" href="user/add/{{ product.id }/" style="alignment: center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                          fill="currentColor"
                          class="bi bi-cart"
