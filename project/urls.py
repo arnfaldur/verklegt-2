@@ -23,7 +23,6 @@ urlpatterns = [
     path('', lambda request: redirect('products/', request)),
     path('admin/', admin.site.urls),
     path('products/', include('products.urls')),
-    path('cart/', include('cart.urls')),
     path('user/', include('user.urls')),
     path('create_product/', include('products.urls')),
     path('about/', include('products.urls')),
