@@ -16,6 +16,7 @@ class UserRegistrationView(CreateView):
 class UserView(LoginRequiredMixin, UpdateView):
     form_class = ProfileForm
     template_name = 'user/user_profile.html'
+    success_url = '/user/profile/'
 
     def get_object(self, queryset=None):
         return self.request.user
