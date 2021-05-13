@@ -17,7 +17,7 @@ class User(AbstractUser):
     address = CharField(max_length=256, blank=True)
     city = CharField(max_length=256, blank=True)
     postal_code = CharField(max_length=16, blank=True)
-    picture = ImageField(blank=True)
+    picture = CharField(max_length=9999)
     products_in_cart = ManyToManyField(Product, through='ProductInCart')
 
     USERNAME_FIELD = 'email'

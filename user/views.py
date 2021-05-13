@@ -2,7 +2,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F, Sum
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, ListView, UpdateView
-
 from user.forms import ProfileForm, UserRegistrationForm
 from user.models import User, ProductInCart
 
@@ -20,6 +19,19 @@ class UserView(LoginRequiredMixin, UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
+
+    def profile(self, request):
+        profile = User.objects.filter(email=request.email).first()
+        if request.method == 'POST':
+            form = ProfileForm(instance=profile, data=request.POST)
+            if form.is_valid():
+                profile = form.save(comit=False)
+                profile.email = request.email
+                profile.save()
+                return redirevt('profile')
+            return render(request, 'user/user_profile.html', {
+                'form': ProfileForm(instance=profile)
+            })
 
 
 def add_to_cart(request, pk):

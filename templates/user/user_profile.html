@@ -1,13 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>{{ user.first_name }} is logged in.</h1>
-    <div class="profileform">
-        <form class="form form- horizontal" method="post">
-            {% csrf_token %}
-            {{ form }}
-            <input type="submit" class="btn btn-primary" value="Update"/>
-        </form>
+    <div class="profile">
+        <div class="profile-form">
+            <form class="form form- horizontal" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" class="btn btn-primary" value="Update"/>
+            </form>
+        </div>
+        <div class="profile-picture">
+            {% if user.is_authenticated %}
+                <img src="{{ user.picture}}"  class="profile-img" />
+             {% endif %}
+        </div>
     </div>
+
         <div>
             <strong>Search history</strong>
             <div id="searchHistoryContainer" />

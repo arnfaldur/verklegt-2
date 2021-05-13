@@ -11,6 +11,9 @@
     margin-top: 30px;
     height: 500px;
 }
+.container{
+    padding-bottom: 40px;
+}
 .home{
     display:flex;
     flex-direction: row;
@@ -123,4 +126,13 @@ bottom: 0;
 .cart{
      display: flex;
     flex-direction: column;
+}
+.profile-picture{
+    max-height: 20px;
+    max-width:20px;
+
+}
+.profile{
+    display: flex;
+    flex-direction: row;
 }

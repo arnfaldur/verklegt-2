@@ -6,10 +6,13 @@
             {% include 'user/cart_product_card.html' with product=product %}
         {% endfor %}
     </ul>
-    <div class="float-start">
+    <div class="cartbottom">
+        <div class="float-start">
         <h1>Total: {{ total_price }} kr.</h1>
     </div>
     <div class="float-end">
         <a href="checkout" class="btn btn-primary">Checkout</a>
     </div>
+    </div>
+
 {% endblock %}
