@@ -46,7 +46,14 @@
 
     flex: 1;
     /*z-index: 1;*/
-
+}
+.productcard{
+    width: 300px;
+    height: 400px;
+}
+.productcard .card-body{
+position: absolute;
+bottom: 0;
 }
 .card-title{
     align-content: center;

@@ -1,4 +1,5 @@
 <div class="card card mb-3">
+    <div class="productcard">
         <div class="card-img card-img-top">
             {% for product_image in product.image_set.all %}
                 <img src="{{ product_image.image }}" class="product-img" width="75%" alt="{{ product.name }}">
@@ -25,5 +26,6 @@
                 </a>
             </div>
         </div>
+    </div>
     </div>
 </div>
