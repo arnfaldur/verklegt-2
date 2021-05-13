@@ -8,4 +8,18 @@
             <input type="submit" class="btn btn-primary" value="Update"/>
         </form>
     </div>
+        <div>
+            <strong>Search history</strong>
+            <div id="searchHistoryContainer" />
+        </div>
+    <script>
+        const values = JSON.parse(window.localStorage.getItem("searchHistory"));
+        const searchContainer = document.getElementById("searchHistoryContainer");
+
+        values.forEach(value => {
+            const searchValueNode = document.createElement("p");
+            searchValueNode.textContent = value;
+            searchContainer.appendChild(searchValueNode);
+        })
+    </script>
 {% endblock %}

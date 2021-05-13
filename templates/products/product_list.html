@@ -56,5 +56,18 @@
             {% endfor %}
         </div>
    </div>
+    <script>
+    const form = document.getElementById("searchFilterForm");
+    form.addEventListener('submit', (e) => {
+        const value = e.target["0"].value;
+        const searchValues = JSON.parse(window.localStorage.getItem("searchHistory"));
+        try {
+            const newSearchValues = searchValues || [];
+            window.localStorage.setItem("searchHistory", JSON.stringify([...newSearchValues, value]));
+        } catch (e) {
+            console.error('Error updating local storage', e)
+        }
+    });
+</script>
 {% endblock %}
 
