@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post" class="form form-horizontal">
+        {% csrf_token %}
+        {% block form %}
+        {% endblock %}
+        <div class="float-right mt-1">
+            <button onclick="window.history.back()" class="btn btn-danger">Previous step</button>
+            <button type="submit" class="btn btn-success">Next step</button>
+        </div>
+    </form>
+{% endblock %}

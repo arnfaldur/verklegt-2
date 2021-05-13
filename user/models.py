@@ -1,5 +1,6 @@
 from django.db import models
-from django.db.models import CharField, ImageField, ManyToManyField
+from django.db.models import CharField, DateField, ImageField, ManyToManyField, \
+    PositiveSmallIntegerField
 from django.contrib.auth.models import AbstractUser
 
 from products.models import Product
@@ -31,3 +32,9 @@ class ProductInCart(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     quantity = models.IntegerField()
+
+
+class CreditCard(models.Model):
+    credit_card = CharField(max_length=19)
+    cvc = PositiveSmallIntegerField()
+    expiry = DateField()

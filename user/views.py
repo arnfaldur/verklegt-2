@@ -1,9 +1,15 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F, Sum
-from django.shortcuts import render, redirect
-from django.views.generic import CreateView, ListView, UpdateView
-from user.forms import ProfileForm, UserRegistrationForm
-from user.models import User, ProductInCart
+from django.views.generic import CreateView, ListView, RedirectView, UpdateView
+
+from user.forms import ContactInformationForm, PaymentInformationForm, ProfileForm, \
+    UserRegistrationForm
+from user.models import ProductInCart
+
+
+class AuthenticatedUserMixin(LoginRequiredMixin):
+    def get_object(self, queryset=None):
+        return self.request.user
 
 
 class UserRegistrationView(CreateView):
@@ -12,13 +18,10 @@ class UserRegistrationView(CreateView):
     success_url = '/'
 
 
-class UserView(LoginRequiredMixin, UpdateView):
+class UserView(AuthenticatedUserMixin, UpdateView):
     form_class = ProfileForm
     template_name = 'user/user_profile.html'
     success_url = '/user/profile/'
-
-    def get_object(self, queryset=None):
-        return self.request.user
 
     def profile(self, request):
         profile = User.objects.filter(email=request.email).first()
@@ -29,27 +32,28 @@ class UserView(LoginRequiredMixin, UpdateView):
                 profile.email = request.email
                 profile.save()
                 return redirevt('profile')
-            return render(request, 'user/user_profile.html', {
-                'form': ProfileForm(instance=profile)
-            })
+            return render(
+                request, 'user/user_profile.html', {
+                    'form': ProfileForm(instance=profile)
+                }
+            )
 
 
-def add_to_cart(request, pk):
-    if request.user.is_authenticated:
-        user = User.objects.get(id=request.user.id)
-        # Create product in cart if none exists
-        obj, created = user.productincart_set.get_or_create(
-            product_id=pk,
-            defaults={'user_id': user.id, 'quantity': 1}
+class AddToCartView(LoginRequiredMixin, RedirectView):
+    url = '/user/cart'
+
+    def get(self, request, *args, **kwargs):
+        # get_or_create the item in the user's cart
+        obj, created = request.user.productincart_set.get_or_create(
+            product_id=kwargs['pk'],
+            defaults={'user_id': request.user.id, 'quantity': 1}
         )
         # if one exists: increment it's quantity
         if not created:
             obj.quantity = F('quantity') + 1
             obj.save()
-    # TODO: else: send user to login page
-    else:
-        redirect('/user/login')
-    return redirect('/user/cart')
+
+        return super().get(request, *args, **kwargs)
 
 
 class Cart(LoginRequiredMixin, ListView):
@@ -66,4 +70,34 @@ class Cart(LoginRequiredMixin, ListView):
         context.update(
             self.get_queryset().aggregate(total_price=Sum('total'))
         )
+        return context
+
+
+class ContactInformationView(AuthenticatedUserMixin, UpdateView):
+    form_class = ContactInformationForm
+    template_name = 'user/checkout/contact_information.html'
+    success_url = '/user/checkout/payment/'
+
+
+class PaymentInformationView(AuthenticatedUserMixin, UpdateView):
+    form_class = PaymentInformationForm
+    template_name = 'user/checkout/payment_information.html'
+    success_url = '/user/checkout/review/'
+
+
+class ReviewPurchaseView(Cart):
+    template_name = 'user/checkout/review.html'
+    success_url = '/user/checkout/confirmation/'
+
+
+class ConfirmationView(Cart):
+    template_name = 'user/checkout/confirmation.html'
+
+
+class Checkout(Cart, UpdateView):
+    form_class = ProfileForm
+    # TODO: add overview of shipping address etc.
+
+    def get_context_data(self, **kwargs):
+        context = Cart.get_context_data(self, **kwargs)
         return context

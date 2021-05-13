@@ -1,18 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>Shopping cart:</h1>
-    <ul class="list-group">
-        {% for product in cart %}
-            {% include 'user/cart_product_card.html' with product=product %}
-        {% endfor %}
-    </ul>
-    <div class="cartbottom">
-        <div class="float-start">
-        <h1>Total: {{ total_price }} kr.</h1>
-    </div>
-    <div class="float-end">
-        <a href="checkout" class="btn btn-primary">Checkout</a>
-    </div>
-    </div>
 
+    {% include 'user/cart_list.html' %}
+
+    <div class="float-end">
+        <a href="/user/checkout/" class="btn btn-primary">Checkout</a>
+    </div>
 {% endblock %}

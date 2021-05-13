@@ -1,0 +1,8 @@
+<ul class="list-group">
+    {% for product in cart %}
+        {% include 'user/cart_product_card.html' with product=product %}
+    {% endfor %}
+</ul>
+<div class="float-start">
+    <h1>Total: {{ total_price }} kr.</h1>
+</div>
