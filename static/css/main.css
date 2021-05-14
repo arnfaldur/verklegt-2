@@ -125,12 +125,21 @@ bottom: 0;
      display: flex;
     flex-direction: column;
 }
-.profile-picture{
-    max-height: 20px;
-    max-width:20px;
 
-}
 .profile{
     display: flex;
     flex-direction: row;
 }
+.profile-img {
+    max-height: 100px;
+    max-width: 100px;
+    border-radius: 50px;
+    margin-left: 50px;
+}
+.profile{
+    display: flex;
+    flex-direction: row;
+
+}
+.profile-form{
+    min-width: 300px;
