@@ -38,9 +38,10 @@ class SearchResult(ProductList):
         search = self.request.GET.get('s')
         sort = self.request.GET.get('sort')
         filtered = self.request.GET.get('filter')
-
+        sale = self.request.GET.get('sale')
+        
         # Replace the product list with a reduced set of products
-        if search:
+        if search and len(search) > 0:
             return super().get_queryset().filter(name__icontains=search)
 
         if sort:
@@ -50,6 +51,9 @@ class SearchResult(ProductList):
             if filtered == 'All':
                 return Product.objects.all()
             return Product.objects.filter(attribute__name__contains=filtered)
+
+        if sale:
+            return Product.objects.filter(on_sale=True)
 
 
 class ProductDetailView(DetailView):
