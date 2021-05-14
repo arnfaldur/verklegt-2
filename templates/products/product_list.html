@@ -30,46 +30,13 @@
                             All
                         </label>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')"
-                               type="checkbox" name="filter" id="Healthy" value="Healthy">
-                        <label class="form-check-label" for="Healthy">Healthy</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')"
-                               type="checkbox" name="filter" id="Sugary" value="Sugary">
-                        <label class="form-check-label" for="Sugary">Sugary</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')"
-                               type="checkbox" name="filter" id="Gluten-free" value="Gluten-free">
-                        <label class="form-check-label" for="Gluten-free">Gluten-free</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')"
-                               type="checkbox" name="filter" id="Organic" value="Organic">
-                        <label class="form-check-label" for="Organic">Organic</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')"
-                               type="checkbox" name="filter" id="Vegan" value="Vegan">
-                        <label class="form-check-label" for="Vegan">Vegan</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')"
-                               type="checkbox" name="filter" id="Cereal" value="Cereal">
-                        <label class="form-check-label" for="Cereal">Cereal</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')"
-                               type="checkbox" name="filter" id="Dairy" value="Dairy">
-                        <label class="form-check-label" for="Dairy">Dairy</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')"
-                               type="checkbox" name="filter" id="Tableware" value="Tableware">
-                        <label class="form-check-label" for="Tableware">Tableware</label>
-                    </div>
+                    {% for attribute in attributes %}
+                        <div class="form-check">
+                            <input class="form-check-input" onclick="document.getElementById('searchFilterForm')"
+                                   type="checkbox" name="filter" id="{{ attribute }}" value="{{ attribute }}">
+                            <label class="form-check-label" for="{{ attribute }}">{{ attribute }}</label>
+                        </div>
+                    {% endfor %}
                     <div class="col-auto">
                         <button type="submit" class="btn btn-primary">Apply</button>
                     </div>

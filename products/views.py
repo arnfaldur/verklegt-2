@@ -26,6 +26,8 @@ class ProductList(ListView):
         # add the name of the category to the context
         context['category'] = self.kwargs['category']
 
+        context['attributes'] = Attribute.objects.all()
+
         return context
 
 
