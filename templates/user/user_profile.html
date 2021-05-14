@@ -14,19 +14,22 @@
                 <img src="{{ user.picture}}"  class="profile-img" />
              {% endif %}
         </div>
-    </div>
-        <div>
+        <div class="search-history">
             <strong>Search history</strong>
             <div id="searchHistoryContainer" />
         </div>
+        </div>
+
     <script>
         const values = JSON.parse(window.localStorage.getItem("searchHistory"));
         const searchContainer = document.getElementById("searchHistoryContainer");
-
+        searchContainer.className="list-group list-group-numbered"
         values.forEach(value => {
-            const searchValueNode = document.createElement("p");
+            const searchValueNode = document.createElement("li");
+            searchValueNode.className="list-group-item"
             searchValueNode.textContent = value;
             searchContainer.appendChild(searchValueNode);
+
         })
     </script>
 {% endblock %}

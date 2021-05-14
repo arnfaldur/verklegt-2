@@ -1,24 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
     <div class="home">
-        <div class="homecard card" style="width: 18rem;">
-            <div class="card-body">
-                <div class="hometitle">
-                    <h5 class="card-title">All products</h5>
-                    <a href="all/" class="card-link">All products</a>
-                </div>
+        <div class="catagory-home">
+            <div class="hometitle">
+                <a href="all/" class="btn btn-light">All products</a>
             </div>
-        </div>
-        {% for category in categories %}
-            <div class="homecard card" style="width: 18rem;">
-                <div class="card-body">
-                    <div class="hometitle d-flex align-items-center">
-                        <h5 class="card-title">{{ category }}</h5>
-                        <a href="{{ category.name.lower }}/" class="card-link">{{ category }}</a>
+            {% for category in categories %}
+                    <div class="hometitle">
+                        <a href="{{ category.name.lower }}/" class="btn btn-light">{{ category }}</a>
                     </div>
-                </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 
 {% endblock %}
