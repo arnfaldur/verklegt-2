@@ -7,9 +7,6 @@
                 <div class="col-auto">
                     <input name="s"  type="search" class="form-control" id="productSearch" placeholder="Search here...">
                 </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </div>
                 <div class="sort">
                     <p class="sortByLabel">Sort by:</p>
                     <div class="form-check">
@@ -45,6 +42,25 @@
                         <input class="form-check-input" onclick="document.getElementById('searchFilterForm')" type="checkbox" name="filter" id="Organic" value="Organic">
                         <label class="form-check-label" for="Organic">Organic</label>
                     </div>
+                    <div class="form-check">
+                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')" type="checkbox" name="filter" id="Vegan" value="Vegan">
+                        <label class="form-check-label" for="Vegan">Vegan</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')" type="checkbox" name="filter" id="Cereal" value="Cereal">
+                        <label class="form-check-label" for="Cereal">Cereal</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')" type="checkbox" name="filter" id="Dairy" value="Dairy">
+                        <label class="form-check-label" for="Dairy">Dairy</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')" type="checkbox" name="filter" id="Tableware" value="Tableware">
+                        <label class="form-check-label" for="Tableware">Tableware</label>
+                    </div>
+                    <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Apply</button>
+                </div>
                 </div>
             </form>
         </div>
