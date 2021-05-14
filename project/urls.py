@@ -15,7 +15,7 @@ Including another URLconf
 """
 import django.urls
 from django.contrib import admin
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.urls import path, include
 
 
@@ -27,7 +27,7 @@ urlpatterns = [
     path('create_product/', include('products.urls')),
     path('delete_product/', include('products.urls')),
     path('update_product/', include('products.urls')),
-    path('about/', include('products.urls')),
-    path('contact/', include('products.urls')),
+    path('about/', lambda request: render(request, 'products/about.html')),
+    path('contact/', lambda request: render(request, 'products/contact.html')),
 
 ]
