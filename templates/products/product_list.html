@@ -30,6 +30,7 @@
                             All
                         </label>
                     </div>
+
                     {% for attribute in attributes %}
                         <div class="form-check">
                             <input class="form-check-input" onclick="document.getElementById('searchFilterForm')"
@@ -37,6 +38,11 @@
                             <label class="form-check-label" for="{{ attribute }}">{{ attribute }}</label>
                         </div>
                     {% endfor %}
+                       <div class="form-check">
+                            <input class="form-check-input" onclick="document.getElementById('searchFilterForm')"
+                                   type="checkbox" name="sale" id="{{ product.on_sale }}">
+                            <label class="form-check-label" for="{{ product.on_sale }}">On Sale</label>
+                        </div>
                     <div class="col-auto">
                         <button type="submit" class="btn btn-primary">Apply</button>
                     </div>
