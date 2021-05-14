@@ -55,7 +55,7 @@ class SearchResult(ProductList):
 
         if sale:
             results = results.filter(on_sale=True)
-        return results
+        return results.distinct()
 
 
 class ProductDetailView(DetailView):
