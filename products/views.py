@@ -17,7 +17,7 @@ class ProductList(ListView):
         # if the url is /all, return all products from the products model
         # otherwise only return the products from the category /<category>
         return Product.objects.all() if self.kwargs['category'] == 'all' \
-            else Product.objects.filter(category__name__contains=self.kwargs['category'])
+            else Product.objects.filter(category__name__iexact=self.kwargs['category'])
 
     def get_context_data(self, **kwargs):
         # Get the default context made by ListView
