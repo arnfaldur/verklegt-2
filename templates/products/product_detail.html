@@ -4,14 +4,14 @@
     <div class="row">
         <div class="col-6 p-2">
             {% for product_image in product.image_set.all %}
-                <img src="{{ product_image.image }}" class="product-img" width="100%" alt="{{ product.name }}">
+                <img src="{{ product_image.image }}" width="100%" alt="{{ product.name }}">
             {% endfor %}
         </div>
         <div class="col-6 p-2">
             <h1>{{ product.name }}</h1>
             <p>{{ product.description }}</p>
             <h4>{{ product.price }} kr.</h4>
-            <div class="col-md-auto">
+            <div class="col-md-auto mb-4">
                 <a class="btn btn-primary" href="/user/add/{{ product.id }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                          fill="currentColor"
@@ -21,6 +21,12 @@
                     </svg>
                 </a>
             </div>
+            {% if user_update %}
+                <a href="/products/update_product/{{ product.id }}" class="btn btn-info">Update product</a>
+            {% endif %}
+            {% if user_delete %}
+                <a href="/products/delete_product/{{ product.id }}" class="btn btn-danger">Delete product</a>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

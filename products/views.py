@@ -62,6 +62,12 @@ class ProductDetailView(DetailView):
     model = Product
     context_object_name = 'product'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user_update'] = self.request.user.has_perm('products.change_product')
+        context['user_delete'] = self.request.user.has_perm('products.delete_product')
+        return context
+
 
 class CreateProductView(PermissionRequiredMixin, CreateView):
     form_class = ProductForm
