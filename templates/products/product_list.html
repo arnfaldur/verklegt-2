@@ -1,66 +1,45 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-   <div class="products-list-container">
+    <div class="products-list-container">
         <div class="filter-container">
-            <form action="/products/{{ category }}/search/" method="get" id="searchFilterForm" class="row align-items-center">
+            <form action="/products/category/{{ category }}/search/" method="get" id="searchFilterForm"
+                  class="row align-items-center">
                 <div class="col-auto">
-                    <input name="s"  type="search" class="form-control" id="productSearch" placeholder="Search here...">
+                    <input name="s" type="search" class="form-control" id="productSearch" placeholder="Search here...">
                 </div>
                 <div class="sort">
                     <p class="sortByLabel">Sort by:</p>
                     <div class="form-check">
-                        <input class="form-check-input" onchange="document.getElementById('searchFilterForm').submit()" type="radio" name="sort" id="name" value="name">
+                        <input class="form-check-input" onchange="document.getElementById('searchFilterForm').submit()"
+                               type="radio" name="sort" id="name" value="name">
                         <label class="form-check-label" for="name">Name</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" onchange="document.getElementById('searchFilterForm').submit()" type="radio" name="sort" id="price" value="price">
+                        <input class="form-check-input" onchange="document.getElementById('searchFilterForm').submit()"
+                               type="radio" name="sort" id="price" value="price">
                         <label class="form-check-label" for="price">Price</label>
                     </div>
                 </div>
                 <div class="filter">
                     <p class="filterByType">Filter by type:</p>
-                      <div class="form-check">
-                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')" type="checkbox" name="filter" id="All" value="All">
+                    <div class="form-check">
+                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')"
+                               type="checkbox" name="filter" id="All" value="All">
                         <label class="form-check-label" for="All">
-                        All
-                      </label>
-                      </div>
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')" type="checkbox" name="filter" id="Healthy" value="Healthy">
-                        <label class="form-check-label" for="Healthy">Healthy</label>
+                            All
+                        </label>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')" type="checkbox" name="filter" id="Sugary" value="Sugary">
-                        <label class="form-check-label" for="Sugary">Sugary</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')" type="checkbox" name="filter" id="Gluten-free" value="Gluten-free">
-                        <label class="form-check-label" for="Gluten-free">Gluten-free</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')" type="checkbox" name="filter" id="Organic" value="Organic">
-                        <label class="form-check-label" for="Organic">Organic</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')" type="checkbox" name="filter" id="Vegan" value="Vegan">
-                        <label class="form-check-label" for="Vegan">Vegan</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')" type="checkbox" name="filter" id="Cereal" value="Cereal">
-                        <label class="form-check-label" for="Cereal">Cereal</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')" type="checkbox" name="filter" id="Dairy" value="Dairy">
-                        <label class="form-check-label" for="Dairy">Dairy</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="document.getElementById('searchFilterForm')" type="checkbox" name="filter" id="Tableware" value="Tableware">
-                        <label class="form-check-label" for="Tableware">Tableware</label>
-                    </div>
+                    {% for attribute in attributes %}
+                        <div class="form-check">
+                            <input class="form-check-input" onclick="document.getElementById('searchFilterForm')"
+                                   type="checkbox" name="filter" id="{{ attribute }}" value="{{ attribute }}">
+                            <label class="form-check-label" for="{{ attribute }}">{{ attribute }}</label>
+                        </div>
+                    {% endfor %}
                     <div class="col-auto">
-                    <button type="submit" class="btn btn-primary">Apply</button>
-                </div>
+                        <button type="submit" class="btn btn-primary">Apply</button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -71,7 +50,7 @@
                 </div>
             {% endfor %}
         </div>
-   </div>
+    </div>
     <script>
     const form = document.getElementById("searchFilterForm");
     form.addEventListener('submit', (e) => {
@@ -89,6 +68,6 @@
         }
 
     });
-</script>
+    </script>
 {% endblock %}
 

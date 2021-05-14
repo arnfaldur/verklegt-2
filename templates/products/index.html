@@ -4,11 +4,11 @@
     <div class="home">
         <div class="catagory-home">
             <div class="hometitle">
-                <a href="all/" class="btn btn-light">All products</a>
+                <a href="category/all/" class="btn btn-light">All products</a>
             </div>
             {% for category in categories %}
                     <div class="hometitle">
-                        <a href="{{ category.name.lower }}/" class="btn btn-light">{{ category }}</a>
+                        <a href="category/{{ category.name.lower }}/" class="btn btn-light">{{ category }}</a>
                     </div>
             {% endfor %}
         </div>
