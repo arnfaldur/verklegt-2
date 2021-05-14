@@ -67,15 +67,6 @@
     flex-direction: column;
 }
 
-.productcard {
-    height: 300px;
-}
-
-.productcard .card-body {
-    position: absolute;
-    bottom: 0;
-}
-
 .card-title {
     align-content: center;
 }
@@ -184,6 +175,5 @@
 
 .product-img {
     width: auto;
-    height: 150px;
-    margin-top: 10px;
+    height: 12rem;
 }
