@@ -3,6 +3,8 @@ from django.db.models import CharField, DateField, ImageField, ManyToManyField, 
     PositiveSmallIntegerField
 from django.contrib.auth.models import AbstractUser
 
+from django_countries.fields import CountryField
+
 from products.models import Product
 
 
@@ -18,6 +20,7 @@ class User(AbstractUser):
     address = CharField(max_length=256, blank=True)
     city = CharField(max_length=256, blank=True)
     postal_code = CharField(max_length=16, blank=True)
+    country = CountryField(blank_label='select country', blank=True)
     picture = CharField(max_length=9999)
     products_in_cart = ManyToManyField(Product, through='ProductInCart')
 
