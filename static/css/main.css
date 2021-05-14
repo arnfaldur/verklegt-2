@@ -1,94 +1,114 @@
-.nav-top{
+.nav-top {
     /*position: fixed;*/
     /*right: 0;*/
     /*position: sticky;*/
     /*left: 0;*/
 }
-.breakfast{
+
+.breakfast {
     background-color: white;
 }
-.product{
+
+.product {
     margin-top: 30px;
     height: 500px;
 }
 
-.home{
-    display:flex;
+.home {
+    display: flex;
     flex-direction: row;
     justify-content: space-around;
     border-radius: 10px;
     margin-top: 60px;
 
 }
-.hometitle{
+
+.hometitle {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.btn-light{
+
+.btn-light {
     margin: 20px;
 }
 
-.catagory-home{
+.catagory-home {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+
 @keyframes gradient {
-    0% {background-position: 0%}
-    100% {background-position: 100%}
+    0% {
+        background-position: 0%
+    }
+    100% {
+        background-position: 100%
+    }
 }
-.products-list-container{
+
+.products-list-container {
     /*z-index: 1;*/
 
 }
-.card{
+
+.card {
     display: flex;
     margin-top: 10px;
 
     flex: 1;
     /*z-index: 1;*/
 }
-.card-body{
+
+.card-body {
     display: flex;
     flex: 1;
     flex-direction: column;
 }
-.productcard{
-    width: 300px;
+
+.productcard {
     height: 300px;
 }
-.productcard .card-body{
-position: absolute;
-bottom: 0;
+
+.productcard .card-body {
+    position: absolute;
+    bottom: 0;
 }
-.card-title{
+
+.card-title {
     align-content: center;
 }
-.card-img{
+
+.card-img {
     display: flex;
     justify-content: center;
 }
-.cardrow{
-    display:flex;
+
+.cardrow {
+    display: flex;
     flex-direction: row;
 }
-.cardcol{
-    display:flex;
+
+.cardcol {
+    display: flex;
     flex-direction: column;
 }
-.btn-primary{
+
+.btn-primary {
     margin-right: 2px;
 
 }
-.about{
+
+.about {
     margin-right: 10px;
 }
-.form{
-    display:flex;
+
+.form {
+    display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    max-width:500px;
+    max-width: 500px;
 }
 
 .products-list-container {
@@ -114,48 +134,56 @@ bottom: 0;
     margin-top: 16px;
     margin-bottom: 0;
 }
-.filterByType{
+
+.filterByType {
     margin-top: 16px;
     margin-bottom: 0;
 }
 
-.cartauth{
+.cartauth {
     display: flex;
     flex-direction: row;
 }
-.cart{
-     display: flex;
+
+.cart {
+    display: flex;
     flex-direction: column;
 }
-.profile{
+
+.profile {
     display: flex;
     flex-direction: row;
 
 }
-.search-history{
+
+.search-history {
     margin-left: 100px;
 }
 
-.profile{
+.profile {
     display: flex;
     flex-direction: row;
 }
+
 .profile-img {
     max-height: 100px;
     max-width: 100px;
     border-radius: 50px;
     margin-left: 50px;
 }
-.profile{
+
+.profile {
     display: flex;
     flex-direction: row;
 
 }
-.profile-form{
+
+.profile-form {
     min-width: 300px;
 }
-.product-img{
+
+.product-img {
     width: auto;
-    height : 150px;
+    height: 150px;
     margin-top: 10px;
 }

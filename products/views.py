@@ -1,7 +1,7 @@
-from django.views.generic import ListView, DetailView
-from products.models import Product, Category, Image, Attribute
-from django.shortcuts import render
-from products.forms.product_form import ProductCreateForm
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.views.generic import CreateView, DeleteView, ListView, DetailView, UpdateView
+from products.models import Product, Category, Attribute
+from products.forms import ProductForm
 
 
 class CategoryList(ListView):
@@ -61,46 +61,24 @@ class ProductDetailView(DetailView):
     context_object_name = 'product'
 
 
-def about(request):
-    return render(request, 'products/about.html')
+class CreateProductView(PermissionRequiredMixin, CreateView):
+    form_class = ProductForm
+    template_name = 'standard_form.html'
+    permission_denied_message = 'You do not have sufficient privileges to create products'
+    permission_required = 'products.add_product'
 
 
-def contact(request):
-    return render(request, 'products/contact.html')
+class UpdateProductView(PermissionRequiredMixin, UpdateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'standard_form.html'
+    permission_denied_message = 'You do not have sufficient privileges to update products'
+    permission_required = 'products.change_product'
 
 
-#@login_required
-def create_product(request):
-    if request.method == 'POST':
-        form = ProductCreateForm(data=request.POST)
-        if form.is_valid():
-            product = form.save()
-            product_image = Image(image=request.POST['image'], product=product)
-            product_image.save()
-            return redirect('products')
-    else:
-        form = ProductCreateForm()
-
-    return render(
-        request, 'products/create_product.html', {
-            'form': form
-        })
-
-
-def delete_product(request, id):
-    product = get_object_or_404(Product,pk=id)
-    product.delete()
-    return redirect('products')
-
-
-def update_product(request, id):
-    instance = get_object_or_404(Product,pk=id)
-    if request.method == 'POST':
-        print(1)
-    else:
-        form = ProductUpdateForm(instance=instance)
-
-    return render(request, 'products/update_product.html', {
-        'form': form,
-        'id': id
-    })
+class DeleteProductView(PermissionRequiredMixin, DeleteView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'standard_form.html'
+    permission_denied_message = 'You do not have sufficient privileges to delete products'
+    permission_required = 'products.delete_product'
