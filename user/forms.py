@@ -22,7 +22,7 @@ class UserRegistrationForm(UserCreationForm):
 class ContactInformationForm(forms.ModelForm):
     class Meta:
         model = models.User
-        fields = ['address', 'city', 'postal_code']
+        fields = ['address', 'city', 'postal_code', 'country']
 
 
 class PaymentInformationForm(forms.ModelForm):
