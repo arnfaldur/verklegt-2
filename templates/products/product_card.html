@@ -2,7 +2,7 @@
     <div class="productcard">
         <div class="card-img card-img-top">
             {% for product_image in product.image_set.all %}
-                <img src="{{ product_image.image }}" class="product-img" width="75%" alt="{{ product.name }}">
+                <img src="{{ product_image.image }}" class="product-img" width="100%" alt="{{ product.name }}">
             {% endfor %}
         </div>
     <div class="card-body">

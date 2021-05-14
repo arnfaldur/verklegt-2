@@ -52,7 +52,7 @@
 }
 .productcard{
     width: 300px;
-    height: 400px;
+    height: 300px;
 }
 .productcard .card-body{
 position: absolute;
@@ -153,3 +153,9 @@ bottom: 0;
 }
 .profile-form{
     min-width: 300px;
+}
+.product-img{
+    width: auto;
+    height : 150px;
+    margin-top: 10px;
+}
