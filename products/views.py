@@ -49,8 +49,11 @@ class SearchResult(ProductList):
             results = results.order_by(sort)
 
         if filtered:
-            if filtered == 'All':
-                return Product.objects.all()
+            if len(filtered) == 1 and filtered[0] == 'All':
+                return_for_all = Product.objects.all()
+                if sort:
+                    return return_for_all.order_by(sort)
+                return return_for_all
             results = results.filter(attribute__name__in=filtered)
 
         if sale:
