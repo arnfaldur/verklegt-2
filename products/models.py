@@ -5,7 +5,7 @@ from django.db.models import CharField, DecimalField
 
 class Product(models.Model):
     name = models.CharField(max_length=128)
-    description = models.CharField(max_length=255, blank=True)
+    description = models.CharField(max_length=999, blank=True)
     price = DecimalField(max_digits=10, decimal_places=2)
     on_sale = models.BooleanField(default=False)
 
