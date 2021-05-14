@@ -52,17 +52,22 @@
         </div>
     </div>
     <script>
-        const form = document.getElementById("searchFilterForm");
-        form.addEventListener('submit', (e) => {
-            const value = e.target["0"].value;
+    const form = document.getElementById("searchFilterForm");
+    form.addEventListener('submit', (e) => {
+        const value = e.target["0"].value;
+        if(value !== ''){
             const searchValues = JSON.parse(window.localStorage.getItem("searchHistory"));
-            try {
-                const newSearchValues = searchValues || [];
-                window.localStorage.setItem("searchHistory", JSON.stringify([...newSearchValues, value]));
-            } catch (e) {
-                console.error('Error updating local storage', e)
-            }
-        });
+        console.log('value',value)
+        console.log('sv',searchValues)
+        try {
+            const newSearchValues = searchValues || [];
+            window.localStorage.setItem("searchHistory", JSON.stringify([...newSearchValues, value]));
+        } catch (e) {
+            console.error('Error updating local storage', e)
+        }
+        }
+
+    });
     </script>
 {% endblock %}
 

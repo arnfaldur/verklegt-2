@@ -41,7 +41,7 @@ class SearchResult(ProductList):
 
         # Replace the product list with a reduced set of products
         if search:
-            return super().get_queryset().filter(name__contains=search)
+            return super().get_queryset().filter(name__icontains=search)
 
         if sort:
             return super().get_queryset().order_by(sort)
